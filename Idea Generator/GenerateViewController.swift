@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  GenerateViewController.swift
 //  Idea Generator
 //
 //  Created by Cameron Bavier on 5/23/16.
@@ -9,24 +9,34 @@
 import UIKit
 import CoreData
 
-class FirstViewController: UIViewController {
+class GenerateViewController: UIViewController {
 
   @IBOutlet weak var refreshWord: UIButton!
   
+  @IBOutlet weak var totalIdeasGenerated: UILabel!
   @IBOutlet weak var wordDisplay: UILabel!
+  
+  let userPrefs = NSUserDefaults.standardUserDefaults()
   
   var firstWord:String = ""
   var secondWord:String = ""
   var thirdWord:String = ""
+  var ideaCount:Int = 0
   
   var isSaved = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    refreshWord.addTarget(self, action: #selector(refreshWords) , forControlEvents: .TouchUpInside)
+    wordDisplay.adjustsFontSizeToFitWidth = true
+    wordDisplay.minimumScaleFactor = 0.5
     
-    wordDisplay.sizeToFit()
+    // TODO: Add to base view controller class!
+    self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 0/255, green: 175/255, blue: 255/255, alpha: 1)
+    self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+    self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    
+    refreshWord.addTarget(self, action: #selector(refreshWords) , forControlEvents: .TouchUpInside)
     
     // Create Nav Buttons
     let shareBtn = UIBarButtonItem.init(barButtonSystemItem: .Action, target: self, action: #selector(shareWords))
@@ -35,17 +45,15 @@ class FirstViewController: UIViewController {
     let favoriteBtn = UIBarButtonItem.init(image: UIImage.init(imageLiteral: "favorite"), style: .Plain, target: self, action: #selector(saveWordsToFavorites))
     self.navigationItem.leftBarButtonItem = favoriteBtn
     
+    ideaCount = userPrefs.integerForKey("ideaGenerationCount")
+    
     // TODO: Refactor
     do {
       try refreshWords()
     } catch {
       // handle error
     }
-    
-    // TODO: Add to base view controller class!
-    self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 0/255, green: 175/255, blue: 255/255, alpha: 1)
-    self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-    self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+  
   }
   
   override func didReceiveMemoryWarning() {
@@ -86,7 +94,8 @@ class FirstViewController: UIViewController {
   
   func refreshWords() throws {
     isSaved = false
-    
+    ideaCount += 1
+    userPrefs.setValue(ideaCount, forKey: "ideaGenerationCount")
     // Set Favorite navigation item to not favorited
     let favoriteBtn = UIBarButtonItem.init(image: UIImage.init(imageLiteral: "favorite"), style: .Plain, target: self, action: #selector(saveWordsToFavorites))
     self.navigationItem.leftBarButtonItem = favoriteBtn
@@ -94,10 +103,15 @@ class FirstViewController: UIViewController {
     firstWord = getRandomWord()
     secondWord = getRandomWord()
     thirdWord = getRandomWord()
-    
-    
     let words: String = firstWord + " " + secondWord + " " + thirdWord
+    
+    wordDisplay.fadeTransition(0.15)
     wordDisplay.text = words
+    
+    let formatter = NSNumberFormatter()
+    formatter.numberStyle = .DecimalStyle
+    let totalIdeasString = formatter.stringFromNumber(ideaCount)
+    totalIdeasGenerated.text =  totalIdeasString
     
     // Store words in core data to use in the history view
     let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -121,5 +135,32 @@ class FirstViewController: UIViewController {
     return randomWord as! String
   }
 
+  // MARK: Shake to refresh words
+  
+  override func canBecomeFirstResponder() -> Bool {
+    return true
+  }
+  
+  override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+    if motion == .MotionShake {
+      // TODO: Refactor
+      do {
+        try refreshWords()
+      } catch {
+        // handle error
+      }
+    }
+  }
 }
 
+// Animations
+extension UIView {
+  func fadeTransition(duration:CFTimeInterval) {
+    let animation:CATransition = CATransition()
+    animation.timingFunction = CAMediaTimingFunction(name:
+      kCAMediaTimingFunctionEaseInEaseOut)
+    animation.type = kCATransitionFade
+    animation.duration = duration
+    self.layer.addAnimation(animation, forKey: kCATransitionFade)
+  }
+}

@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  HistoryViewController.swift
 //  Idea Generator
 //
 //  Created by Cameron Bavier on 5/23/16.
@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Firebase
 
-class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   var results :NSArray?
   

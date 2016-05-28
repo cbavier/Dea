@@ -1,5 +1,5 @@
 //
-//  ThirdViewController.swift
+//  FavoritesViewController.swift
 //  Idea Generator
 //
 //  Created by Cameron Bavier on 5/23/16.
@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Firebase
 
-class ThirdViewController: UIViewController {
+class FavoritesViewController: UIViewController {
 
   var results :NSArray?
   

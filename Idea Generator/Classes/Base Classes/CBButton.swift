@@ -31,12 +31,11 @@ class CBButton: UIButton {
       if (highlighted) {
         highlighted = false
         self.backgroundColor = UIColor.init(red: 0/255, green: 165/255, blue: 245/255, alpha: 1)
-//        self.tintColor = UIColor.blackColor()
-        UIView.animateWithDuration(0.07 ,
+        UIView.animateWithDuration(0.04 ,
                                    delay: 0.0,
                                    options: .CurveEaseInOut,
                                    animations: {
-                                    self.transform = CGAffineTransformMakeScale(0.75, 0.75)
+                                    self.transform = CGAffineTransformMakeScale(0.90, 0.90)
           }, completion: { finished in
             
         })
@@ -44,7 +43,7 @@ class CBButton: UIButton {
       else {
         self.backgroundColor = UIColor.init(red: 0/255, green: 175/255, blue: 255/255, alpha: 1)
         self.tintColor = UIColor.whiteColor()
-        UIView.animateWithDuration(0.07 ,
+        UIView.animateWithDuration(0.04 ,
                                    delay: 0.0,
                                    options: .CurveEaseInOut,
                                    animations: {

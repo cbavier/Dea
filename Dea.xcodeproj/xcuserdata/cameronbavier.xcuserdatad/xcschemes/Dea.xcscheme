@@ -17,7 +17,7 @@
                BlueprintIdentifier = "E76F15891CF3D59900AC942F"
                BuildableName = "Idea Generator.app"
                BlueprintName = "Idea Generator"
-               ReferencedContainer = "container:Idea Generator.xcodeproj">
+               ReferencedContainer = "container:Dea.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "E76F159F1CF3D59900AC942F"
                BuildableName = "Idea GeneratorTests.xctest"
                BlueprintName = "Idea GeneratorTests"
-               ReferencedContainer = "container:Idea Generator.xcodeproj">
+               ReferencedContainer = "container:Dea.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "E76F15891CF3D59900AC942F"
             BuildableName = "Idea Generator.app"
             BlueprintName = "Idea Generator"
-            ReferencedContainer = "container:Idea Generator.xcodeproj">
+            ReferencedContainer = "container:Dea.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -68,7 +68,7 @@
             BlueprintIdentifier = "E76F15891CF3D59900AC942F"
             BuildableName = "Idea Generator.app"
             BlueprintName = "Idea Generator"
-            ReferencedContainer = "container:Idea Generator.xcodeproj">
+            ReferencedContainer = "container:Dea.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -93,7 +93,7 @@
             BlueprintIdentifier = "E76F15891CF3D59900AC942F"
             BuildableName = "Idea Generator.app"
             BlueprintName = "Idea Generator"
-            ReferencedContainer = "container:Idea Generator.xcodeproj">
+            ReferencedContainer = "container:Dea.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
