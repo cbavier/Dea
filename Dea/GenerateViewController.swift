@@ -75,7 +75,7 @@ class GenerateViewController: UIViewController {
     if !isSaved {
       isSaved = true
       
-      // Set Favorite navigation item to not favorited
+      // Set Favorite navigation item to favorited
       let favoriteBtn = UIBarButtonItem.init(image: UIImage.init(imageLiteral: "favorited"), style: .Plain, target: self, action: #selector(saveWordsToFavorites))
       self.navigationItem.leftBarButtonItem = favoriteBtn
       

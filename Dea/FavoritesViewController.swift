@@ -13,6 +13,7 @@ import Firebase
 class FavoritesViewController: UIViewController {
 
   var results :NSArray?
+  var selectedRow:Int?
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -37,9 +38,10 @@ class FavoritesViewController: UIViewController {
     self.tableView.reloadData()
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  override func viewDidDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    self.navigationItem.rightBarButtonItem = nil
   }
   
   func loadFavorites() {
@@ -70,6 +72,38 @@ class FavoritesViewController: UIViewController {
 
   }
   
+  func showShareBtn() {
+    let shareBtn = UIBarButtonItem.init(barButtonSystemItem: .Action, target: self, action: #selector(shareWords))
+    self.navigationItem.rightBarButtonItem = shareBtn
+  }
+  
+  func shareWords(sender : AnyObject) {
+    
+    let data = results![selectedRow!]
+    
+    let firstWord = data.valueForKey("firstWord") as? String
+    let secondWord = data.valueForKey("secondWord") as? String
+    let thirdWord = data.valueForKey("thirdWord") as? String
+    
+    let words:String = firstWord! + " " + secondWord! + " " + thirdWord!
+    let activityVC = UIActivityViewController(activityItems:[words], applicationActivities: nil)
+    
+    activityVC.completionWithItemsHandler = { activity, success, items, error in
+      // If sucessful we need to hide the share button and deselect the row
+      if success {
+        let indexPath: NSIndexPath = NSIndexPath(forRow: self.selectedRow!, inSection: 0)
+        
+        self.navigationItem.rightBarButtonItem = nil
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+      }
+      
+    }
+    
+    activityVC.popoverPresentationController?.sourceView = sender.view
+    self.presentViewController(activityVC, animated: true, completion: nil)
+    
+  }
+  
   // MARK: - Table View Delegate Methods
   
   func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -95,7 +129,9 @@ class FavoritesViewController: UIViewController {
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    selectedRow = indexPath.row
+//    self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    showShareBtn()
   }
   
   func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

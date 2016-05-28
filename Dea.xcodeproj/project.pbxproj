@@ -38,7 +38,7 @@
 		A85F9A0044F01E79CEF08BAB /* Pods_Idea_Generator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Idea_Generator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0BB7E050C3F9B15FF24A626 /* Pods-Idea Generator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Idea Generator.release.xcconfig"; path = "Pods/Target Support Files/Pods-Idea Generator/Pods-Idea Generator.release.xcconfig"; sourceTree = "<group>"; };
 		B8AAB6BD41CD48F4CA90FE87 /* Pods-Idea Generator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Idea Generator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Idea Generator/Pods-Idea Generator.debug.xcconfig"; sourceTree = "<group>"; };
-		E76F158A1CF3D59900AC942F /* Idea Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Idea Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E76F158A1CF3D59900AC942F /* Dea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76F158D1CF3D59900AC942F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E76F158F1CF3D59900AC942F /* GenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateViewController.swift; sourceTree = "<group>"; };
 		E76F15911CF3D59900AC942F /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -97,8 +97,8 @@
 		E76F15811CF3D59900AC942F = {
 			isa = PBXGroup;
 			children = (
-				E76F158C1CF3D59900AC942F /* Idea Generator */,
-				E76F15A31CF3D59900AC942F /* Idea GeneratorTests */,
+				E76F158C1CF3D59900AC942F /* Dea */,
+				E76F15A31CF3D59900AC942F /* DeaTests */,
 				E76F158B1CF3D59900AC942F /* Products */,
 				B9D1093444F650B0DB14D635 /* Pods */,
 				9187D0ECC2EF02277E056C70 /* Frameworks */,
@@ -108,20 +108,20 @@
 		E76F158B1CF3D59900AC942F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E76F158A1CF3D59900AC942F /* Idea Generator.app */,
+				E76F158A1CF3D59900AC942F /* Dea.app */,
 				E76F15A01CF3D59900AC942F /* Idea GeneratorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E76F158C1CF3D59900AC942F /* Idea Generator */ = {
+		E76F158C1CF3D59900AC942F /* Dea */ = {
 			isa = PBXGroup;
 			children = (
 				E76F15B61CF3DE1800AC942F /* Classes */,
 				E76F158D1CF3D59900AC942F /* AppDelegate.swift */,
 				E76F158F1CF3D59900AC942F /* GenerateViewController.swift */,
-				E76F15911CF3D59900AC942F /* HistoryViewController.swift */,
 				E76F15B11CF3D7C300AC942F /* FavoritesViewController.swift */,
+				E76F15911CF3D59900AC942F /* HistoryViewController.swift */,
 				E76F15931CF3D59900AC942F /* Main.storyboard */,
 				E76F15961CF3D59900AC942F /* Assets.xcassets */,
 				E76F15981CF3D59900AC942F /* LaunchScreen.storyboard */,
@@ -131,15 +131,16 @@
 				E76F15E91CF5346800AC942F /* CoreDataTest.xcdatamodeld */,
 				E76F15EE1CF7EB8500AC942F /* iTunesArtwork */,
 			);
-			path = "Idea Generator";
+			path = Dea;
 			sourceTree = "<group>";
 		};
-		E76F15A31CF3D59900AC942F /* Idea GeneratorTests */ = {
+		E76F15A31CF3D59900AC942F /* DeaTests */ = {
 			isa = PBXGroup;
 			children = (
 				E76F15A41CF3D59900AC942F /* Idea_GeneratorTests.swift */,
 				E76F15A61CF3D59900AC942F /* Info.plist */,
 			);
+			name = DeaTests;
 			path = "Idea GeneratorTests";
 			sourceTree = "<group>";
 		};
@@ -180,7 +181,7 @@
 			);
 			name = "Idea Generator";
 			productName = "Idea Generator";
-			productReference = E76F158A1CF3D59900AC942F /* Idea Generator.app */;
+			productReference = E76F158A1CF3D59900AC942F /* Dea.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E76F159F1CF3D59900AC942F /* Idea GeneratorTests */ = {
@@ -456,10 +457,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "Idea Generator/Info.plist";
+				INFOPLIST_FILE = Dea/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = baviertech.dea;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.baviertech.dea;
+				PRODUCT_NAME = Dea;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -470,10 +471,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "Idea Generator/Info.plist";
+				INFOPLIST_FILE = Dea/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = baviertech.dea;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.baviertech.dea;
+				PRODUCT_NAME = Dea;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

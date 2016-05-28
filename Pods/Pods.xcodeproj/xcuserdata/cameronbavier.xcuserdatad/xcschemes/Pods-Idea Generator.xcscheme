@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9E57282B53249FC176018A56'
+               BlueprintIdentifier = '3D40B8249BCF8767A20452C6'
                BlueprintName = 'Pods-Idea Generator'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_Idea_Generator.framework'>

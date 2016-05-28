@@ -13,6 +13,7 @@ import Firebase
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   var results :NSArray?
+  var selectedRow:Int?
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -37,11 +38,37 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     self.tableView.reloadData()
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  override func viewDidDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    self.navigationItem.leftBarButtonItem = nil
   }
 
+  func saveWordsToFavorites() throws {
+      
+    // Set Favorite navigation item to not favorited
+    let indexPath: NSIndexPath = NSIndexPath(forRow: self.selectedRow!, inSection: 0)
+    self.navigationItem.leftBarButtonItem = nil
+    self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    
+    // Store words in core data to use in the favorites view
+    let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+    let context:NSManagedObjectContext = appDel.managedObjectContext
+    
+    let newWords = NSEntityDescription.insertNewObjectForEntityForName("WordFavorites", inManagedObjectContext: context)
+    let data = results![selectedRow!]
+    
+    let firstWord = data.valueForKey("firstWord") as? String
+    let secondWord = data.valueForKey("secondWord") as? String
+    let thirdWord = data.valueForKey("thirdWord") as? String
+    newWords.setValue(firstWord, forKey: "firstWord")
+    newWords.setValue(secondWord, forKey: "secondWord")
+    newWords.setValue(thirdWord, forKey: "thirdWord")
+    
+    
+    try context.save()
+  }
+  
   func loadHistory() {
     // Retrieve stored words in core data to use
     let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -76,6 +103,11 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     self.tableView.reloadData()
   }
   
+  func showFavoriteBtn() {
+    let favoriteBtn = UIBarButtonItem.init(image: UIImage.init(imageLiteral: "favorite"), style: .Plain, target: self, action: #selector(saveWordsToFavorites))
+    self.navigationItem.leftBarButtonItem = favoriteBtn
+  }
+  
   // MARK: - Table View Delegate Methods
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -97,7 +129,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    selectedRow = indexPath.row
+    showFavoriteBtn()
+    //self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
   
 }

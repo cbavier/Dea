@@ -7,10 +7,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Idea Generator-->
+        <!--Generate-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="GenerateViewController" customModule="Idea_Generator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="GenerateViewController" customModule="Dea" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1IB-xK-6QC" customClass="CBButton" customModule="Idea_Generator" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1IB-xK-6QC" customClass="CBButton" customModule="Dea" customModuleProvider="target">
                                 <rect key="frame" x="201" y="374" width="200" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Jvv-Gz-WnQ"/>
@@ -82,7 +82,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Idea Generator" id="xIq-5p-bf5"/>
+                    <navigationItem key="navigationItem" title="Generate" id="xIq-5p-bf5"/>
                     <connections>
                         <outlet property="refreshWord" destination="1IB-xK-6QC" id="gKu-Nb-Iik"/>
                         <outlet property="totalIdeasGenerated" destination="vkL-bb-Rgp" id="PXu-Eo-jH9"/>
@@ -96,7 +96,7 @@
         <!--History-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8rJ-Kc-sve" customClass="HistoryViewController" customModule="Idea_Generator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8rJ-Kc-sve" customClass="HistoryViewController" customModule="Dea" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -176,7 +176,7 @@
         <!--Favorites-->
         <scene sceneID="D4H-Sc-hQv">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="LZl-rC-2vc" customClass="FavoritesViewController" customModule="Idea_Generator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="LZl-rC-2vc" customClass="FavoritesViewController" customModule="Dea" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pHn-vj-74J"/>
                         <viewControllerLayoutGuide type="bottom" id="FxY-K5-6D0"/>
