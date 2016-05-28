@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		C25BD8AA58799ACC21199310 /* Pods_Idea_Generator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A85F9A0044F01E79CEF08BAB /* Pods_Idea_Generator.framework */; };
 		E76F158E1CF3D59900AC942F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76F158D1CF3D59900AC942F /* AppDelegate.swift */; };
-		E76F15901CF3D59900AC942F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76F158F1CF3D59900AC942F /* FirstViewController.swift */; };
-		E76F15921CF3D59900AC942F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76F15911CF3D59900AC942F /* SecondViewController.swift */; };
+		E76F15901CF3D59900AC942F /* GenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76F158F1CF3D59900AC942F /* GenerateViewController.swift */; };
+		E76F15921CF3D59900AC942F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76F15911CF3D59900AC942F /* HistoryViewController.swift */; };
 		E76F15951CF3D59900AC942F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E76F15931CF3D59900AC942F /* Main.storyboard */; };
 		E76F15971CF3D59900AC942F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E76F15961CF3D59900AC942F /* Assets.xcassets */; };
 		E76F159A1CF3D59900AC942F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E76F15981CF3D59900AC942F /* LaunchScreen.storyboard */; };
 		E76F15A51CF3D59900AC942F /* Idea_GeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76F15A41CF3D59900AC942F /* Idea_GeneratorTests.swift */; };
 		E76F15B01CF3D6E800AC942F /* Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = E76F15AF1CF3D6E800AC942F /* Words.plist */; };
-		E76F15B21CF3D7C300AC942F /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76F15B11CF3D7C300AC942F /* ThirdViewController.swift */; };
+		E76F15B21CF3D7C300AC942F /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76F15B11CF3D7C300AC942F /* FavoritesViewController.swift */; };
 		E76F15B51CF3DE0D00AC942F /* CBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76F15B41CF3DE0D00AC942F /* CBButton.swift */; };
 		E76F15B81CF3DFE900AC942F /* CBTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76F15B71CF3DFE900AC942F /* CBTextButton.swift */; };
 		E76F15EB1CF5346800AC942F /* CoreDataTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E76F15E91CF5346800AC942F /* CoreDataTest.xcdatamodeld */; };
@@ -40,8 +40,8 @@
 		B8AAB6BD41CD48F4CA90FE87 /* Pods-Idea Generator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Idea Generator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Idea Generator/Pods-Idea Generator.debug.xcconfig"; sourceTree = "<group>"; };
 		E76F158A1CF3D59900AC942F /* Idea Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Idea Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76F158D1CF3D59900AC942F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E76F158F1CF3D59900AC942F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		E76F15911CF3D59900AC942F /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		E76F158F1CF3D59900AC942F /* GenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateViewController.swift; sourceTree = "<group>"; };
+		E76F15911CF3D59900AC942F /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		E76F15941CF3D59900AC942F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E76F15961CF3D59900AC942F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E76F15991CF3D59900AC942F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		E76F15A41CF3D59900AC942F /* Idea_GeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Idea_GeneratorTests.swift; sourceTree = "<group>"; };
 		E76F15A61CF3D59900AC942F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E76F15AF1CF3D6E800AC942F /* Words.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Words.plist; sourceTree = "<group>"; };
-		E76F15B11CF3D7C300AC942F /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		E76F15B11CF3D7C300AC942F /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		E76F15B41CF3DE0D00AC942F /* CBButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBButton.swift; path = "Classes/Base Classes/CBButton.swift"; sourceTree = "<group>"; };
 		E76F15B71CF3DFE900AC942F /* CBTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBTextButton.swift; path = "Classes/Base Classes/CBTextButton.swift"; sourceTree = "<group>"; };
 		E76F15EA1CF5346800AC942F /* CoreDataTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataTest.xcdatamodel; sourceTree = "<group>"; };
@@ -119,9 +119,9 @@
 			children = (
 				E76F15B61CF3DE1800AC942F /* Classes */,
 				E76F158D1CF3D59900AC942F /* AppDelegate.swift */,
-				E76F158F1CF3D59900AC942F /* FirstViewController.swift */,
-				E76F15911CF3D59900AC942F /* SecondViewController.swift */,
-				E76F15B11CF3D7C300AC942F /* ThirdViewController.swift */,
+				E76F158F1CF3D59900AC942F /* GenerateViewController.swift */,
+				E76F15911CF3D59900AC942F /* HistoryViewController.swift */,
+				E76F15B11CF3D7C300AC942F /* FavoritesViewController.swift */,
 				E76F15931CF3D59900AC942F /* Main.storyboard */,
 				E76F15961CF3D59900AC942F /* Assets.xcassets */,
 				E76F15981CF3D59900AC942F /* LaunchScreen.storyboard */,
@@ -317,12 +317,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E76F15921CF3D59900AC942F /* SecondViewController.swift in Sources */,
+				E76F15921CF3D59900AC942F /* HistoryViewController.swift in Sources */,
 				E76F15EB1CF5346800AC942F /* CoreDataTest.xcdatamodeld in Sources */,
 				E76F15B81CF3DFE900AC942F /* CBTextButton.swift in Sources */,
 				E76F158E1CF3D59900AC942F /* AppDelegate.swift in Sources */,
-				E76F15B21CF3D7C300AC942F /* ThirdViewController.swift in Sources */,
-				E76F15901CF3D59900AC942F /* FirstViewController.swift in Sources */,
+				E76F15B21CF3D7C300AC942F /* FavoritesViewController.swift in Sources */,
+				E76F15901CF3D59900AC942F /* GenerateViewController.swift in Sources */,
 				E76F15B51CF3DE0D00AC942F /* CBButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,8 +458,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Idea Generator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "baviertech.Idea-Generator";
+				PRODUCT_BUNDLE_IDENTIFIER = baviertech.dea;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -471,8 +472,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Idea Generator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "baviertech.Idea-Generator";
+				PRODUCT_BUNDLE_IDENTIFIER = baviertech.dea;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

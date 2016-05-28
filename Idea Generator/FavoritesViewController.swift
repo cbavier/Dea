@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  ThirdViewController.swift
 //  Idea Generator
 //
 //  Created by Cameron Bavier on 5/23/16.
@@ -10,8 +10,8 @@ import UIKit
 import CoreData
 import Firebase
 
-class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-  
+class ThirdViewController: UIViewController {
+
   var results :NSArray?
   
   @IBOutlet weak var tableView: UITableView!
@@ -24,16 +24,16 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     
-    let clearAllBtn = UIBarButtonItem.init(title: "Clear all", style:UIBarButtonItemStyle.Plain, target: self, action: #selector(clearHistory))
-    self.navigationItem.rightBarButtonItem = clearAllBtn
+//    let clearAllBtn = UIBarButtonItem.init(title: "Clear all", style:UIBarButtonItemStyle.Plain, target: self, action: #selector(clearHistory))
+//    self.navigationItem.rightBarButtonItem = clearAllBtn
     
-    loadHistory()
+    loadFavorites()
   }
-
+  
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
-    loadHistory()
+    loadFavorites()
     self.tableView.reloadData()
   }
   
@@ -41,45 +41,47 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-
-  func loadHistory() {
+  
+  func loadFavorites() {
     // Retrieve stored words in core data to use
     let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     let context:NSManagedObjectContext = appDel.managedObjectContext
     
-    let request = NSFetchRequest(entityName: "WordHistory")
+    let request = NSFetchRequest(entityName: "WordFavorites")
     request.returnsObjectsAsFaults = false
     
     do {
-      results = try context.executeFetchRequest(request)
+      results = try context.executeFetchRequest(request).reverse()
     } catch {}
   }
   
-  func clearHistory() {
+  func deleteFavorite(row : Int) {
     let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     let context:NSManagedObjectContext = appDel.managedObjectContext
     
-    // Send Clear History Event
-    FIRAnalytics.logEventWithName("clear_history", parameters: [
-      "word_count":results!.count
-      ])
-    
-    for bas: AnyObject in results! {
-      context.deleteObject(bas as! NSManagedObject)
-    }
+    let favoriteWords = results![row]
+    context.deleteObject(favoriteWords as! NSManagedObject)
     
     do {
       try context.save()
+      let request = NSFetchRequest(entityName: "WordFavorites")
+      results = try context.executeFetchRequest(request)
     } catch {}
-    
-    results = []
-    self.tableView.reloadData()
+
   }
   
   // MARK: - Table View Delegate Methods
-
+  
+  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    return true
+  }
+  
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return results!.count
+  }
+  
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = UITableViewCell.init(style: .Default, reuseIdentifier: "HistoryIdentifier")
+    let cell = UITableViewCell.init(style: .Default, reuseIdentifier: "FavoritesIdentifier")
     
     let data = results![indexPath.row] as! NSManagedObject
     
@@ -92,13 +94,18 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     return cell
   }
   
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return results!.count
-  }
-  
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
   
-}
+  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    if (editingStyle == UITableViewCellEditingStyle.Delete) {
+      // handle delete (by removing the data from your array and updating the tableview)
+      deleteFavorite(indexPath.row)
+  
+      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
 
+    }
+  }
+  
+}
