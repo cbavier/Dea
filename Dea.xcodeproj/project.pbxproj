@@ -22,6 +22,8 @@
 		E76F15EB1CF5346800AC942F /* CoreDataTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E76F15E91CF5346800AC942F /* CoreDataTest.xcdatamodeld */; };
 		E76F15ED1CF7CB2E00AC942F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E76F15EC1CF7CB2E00AC942F /* GoogleService-Info.plist */; };
 		E76F15EF1CF7EB8500AC942F /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = E76F15EE1CF7EB8500AC942F /* iTunesArtwork */; };
+		E7A63BE51D03E0A1000635D5 /* CBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A63BE41D03E0A1000635D5 /* CBViewController.swift */; };
+		E7FE2D7F1D031FAB00DB7407 /* Emoji.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7FE2D7E1D031FAB00DB7407 /* Emoji.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		E76F15EA1CF5346800AC942F /* CoreDataTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataTest.xcdatamodel; sourceTree = "<group>"; };
 		E76F15EC1CF7CB2E00AC942F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E76F15EE1CF7EB8500AC942F /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = SOURCE_ROOT; };
+		E7A63BE41D03E0A1000635D5 /* CBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CBViewController.swift; path = "Classes/Base Classes/CBViewController.swift"; sourceTree = "<group>"; };
+		E7FE2D7E1D031FAB00DB7407 /* Emoji.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Emoji.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 				E76F15AF1CF3D6E800AC942F /* Words.plist */,
 				E76F15E91CF5346800AC942F /* CoreDataTest.xcdatamodeld */,
 				E76F15EE1CF7EB8500AC942F /* iTunesArtwork */,
+				E7FE2D7E1D031FAB00DB7407 /* Emoji.plist */,
 			);
 			path = Dea;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 			children = (
 				E76F15B41CF3DE0D00AC942F /* CBButton.swift */,
 				E76F15B71CF3DFE900AC942F /* CBTextButton.swift */,
+				E7A63BE41D03E0A1000635D5 /* CBViewController.swift */,
 			);
 			name = "Base Classes";
 			sourceTree = "<group>";
@@ -251,6 +257,7 @@
 				E76F15EF1CF7EB8500AC942F /* iTunesArtwork in Resources */,
 				E76F159A1CF3D59900AC942F /* LaunchScreen.storyboard in Resources */,
 				E76F15ED1CF7CB2E00AC942F /* GoogleService-Info.plist in Resources */,
+				E7FE2D7F1D031FAB00DB7407 /* Emoji.plist in Resources */,
 				E76F15971CF3D59900AC942F /* Assets.xcassets in Resources */,
 				E76F15951CF3D59900AC942F /* Main.storyboard in Resources */,
 			);
@@ -323,6 +330,7 @@
 				E76F15B81CF3DFE900AC942F /* CBTextButton.swift in Sources */,
 				E76F158E1CF3D59900AC942F /* AppDelegate.swift in Sources */,
 				E76F15B21CF3D7C300AC942F /* FavoritesViewController.swift in Sources */,
+				E7A63BE51D03E0A1000635D5 /* CBViewController.swift in Sources */,
 				E76F15901CF3D59900AC942F /* GenerateViewController.swift in Sources */,
 				E76F15B51CF3DE0D00AC942F /* CBButton.swift in Sources */,
 			);
@@ -458,6 +466,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Dea/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.baviertech.dea;
 				PRODUCT_NAME = Dea;
@@ -472,6 +481,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Dea/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.baviertech.dea;
 				PRODUCT_NAME = Dea;

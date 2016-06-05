@@ -50,6 +50,18 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vqx-ci-OZe">
+                                <rect key="frame" x="181" y="87" width="239" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="1N2-UB-zZv"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Words"/>
+                                    <segment title="Emoji"/>
+                                    <segment title="Both"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -62,12 +74,16 @@
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="vkL-bb-Rgp" secondAttribute="bottom" constant="16" id="IeS-TZ-UIc"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" relation="lessThanOrEqual" secondItem="1IB-xK-6QC" secondAttribute="bottom" constant="133" id="M60-wx-oCU"/>
                             <constraint firstItem="1IB-xK-6QC" firstAttribute="centerX" secondItem="fMg-tC-ZES" secondAttribute="centerX" id="Ubc-3v-tu3"/>
+                            <constraint firstItem="vqx-ci-OZe" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="height" multiplier="239:600" id="a3n-ZI-UpY"/>
                             <constraint firstItem="fMg-tC-ZES" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="height" multiplier="9:10" id="bTW-SO-7VY"/>
+                            <constraint firstItem="vqx-ci-OZe" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="23" id="kDH-Po-QQD"/>
                             <constraint firstItem="fMg-tC-ZES" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" constant="-40" id="oyn-GZ-QKj"/>
                             <constraint firstItem="1IB-xK-6QC" firstAttribute="top" secondItem="fMg-tC-ZES" secondAttribute="bottom" constant="35" id="sMK-Mf-p0i"/>
                             <constraint firstItem="fMg-tC-ZES" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="41" id="sNa-e5-XaR"/>
                             <constraint firstItem="1IB-xK-6QC" firstAttribute="top" secondItem="fMg-tC-ZES" secondAttribute="bottom" constant="66" id="uzg-w7-EGD"/>
+                            <constraint firstItem="vqx-ci-OZe" firstAttribute="centerX" secondItem="fMg-tC-ZES" secondAttribute="centerX" id="vGP-6M-jki"/>
                             <constraint firstItem="fMg-tC-ZES" firstAttribute="centerX" secondItem="1IB-xK-6QC" secondAttribute="centerX" id="wXu-88-QEy"/>
+                            <constraint firstItem="vqx-ci-OZe" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="yOR-h7-pDN"/>
                             <constraint firstItem="fMg-tC-ZES" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="261" id="zYL-ny-k55"/>
                         </constraints>
                         <variation key="default">
@@ -76,6 +92,7 @@
                                 <exclude reference="sNa-e5-XaR"/>
                                 <exclude reference="wXu-88-QEy"/>
                                 <exclude reference="zYL-ny-k55"/>
+                                <exclude reference="yOR-h7-pDN"/>
                                 <exclude reference="4hC-R1-7qs"/>
                                 <exclude reference="uzg-w7-EGD"/>
                                 <exclude reference="9QC-bS-EBW"/>
@@ -84,6 +101,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Generate" id="xIq-5p-bf5"/>
                     <connections>
+                        <outlet property="displayTypeSegment" destination="vqx-ci-OZe" id="Brc-2h-rX8"/>
                         <outlet property="refreshWord" destination="1IB-xK-6QC" id="gKu-Nb-Iik"/>
                         <outlet property="totalIdeasGenerated" destination="vkL-bb-Rgp" id="PXu-Eo-jH9"/>
                         <outlet property="wordDisplay" destination="fMg-tC-ZES" id="fPk-7b-ylB"/>
@@ -193,17 +211,55 @@
                                     <outlet property="delegate" destination="LZl-rC-2vc" id="j3q-x7-XkL"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKB-gU-uZN">
+                                <rect key="frame" x="0.0" y="57" width="600" height="487"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CX-nu-N8h">
+                                        <rect key="frame" x="188" y="233" width="225" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="225" id="5pU-d4-7zo"/>
+                                            <constraint firstAttribute="height" constant="21" id="zD7-77-tVV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                        <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't have any Favorites yet. Added Favorites will show up here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R08-Tr-XRq">
+                                        <rect key="frame" x="136" y="260" width="329" height="58"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="329" id="8VK-sV-c5f"/>
+                                            <constraint firstAttribute="height" constant="58" id="eAF-57-B5S"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="5CX-nu-N8h" firstAttribute="centerX" secondItem="R08-Tr-XRq" secondAttribute="centerX" id="3eg-c3-cOb"/>
+                                    <constraint firstItem="R08-Tr-XRq" firstAttribute="top" secondItem="5CX-nu-N8h" secondAttribute="bottom" constant="6" id="4ri-Xx-U9n"/>
+                                    <constraint firstItem="5CX-nu-N8h" firstAttribute="centerX" secondItem="gKB-gU-uZN" secondAttribute="centerX" id="STR-cQ-4jf"/>
+                                    <constraint firstItem="R08-Tr-XRq" firstAttribute="centerY" secondItem="gKB-gU-uZN" secondAttribute="centerY" constant="45.5" id="dDn-Cc-5Ay"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Huk-hd-9T2" firstAttribute="leading" secondItem="YfV-rd-Naw" secondAttribute="leading" id="4Lm-aD-jkY"/>
+                            <constraint firstItem="FxY-K5-6D0" firstAttribute="top" secondItem="gKB-gU-uZN" secondAttribute="bottom" constant="7" id="8Dd-Vs-i6I"/>
                             <constraint firstItem="Huk-hd-9T2" firstAttribute="top" secondItem="pHn-vj-74J" secondAttribute="bottom" id="K8I-4B-AcL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gKB-gU-uZN" secondAttribute="trailing" constant="-20" id="g02-OT-rD9"/>
+                            <constraint firstItem="gKB-gU-uZN" firstAttribute="top" secondItem="pHn-vj-74J" secondAttribute="bottom" constant="-7" id="jL3-82-pKo"/>
+                            <constraint firstItem="gKB-gU-uZN" firstAttribute="centerX" secondItem="YfV-rd-Naw" secondAttribute="centerX" id="nrs-UM-eal"/>
+                            <constraint firstItem="gKB-gU-uZN" firstAttribute="centerY" secondItem="YfV-rd-Naw" secondAttribute="centerY" id="sl0-AQ-FDx"/>
                             <constraint firstAttribute="trailing" secondItem="Huk-hd-9T2" secondAttribute="trailing" id="tR3-Zh-Ba9"/>
                             <constraint firstItem="Huk-hd-9T2" firstAttribute="bottom" secondItem="FxY-K5-6D0" secondAttribute="top" id="z4L-v9-g8A"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Favorites" id="V0g-zN-yh8"/>
                     <connections>
+                        <outlet property="emtpyFavoritesView" destination="gKB-gU-uZN" id="QyS-Xu-Shc"/>
                         <outlet property="tableView" destination="Huk-hd-9T2" id="1YA-ep-80Y"/>
                     </connections>
                 </viewController>

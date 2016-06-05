@@ -10,23 +10,16 @@ import UIKit
 import CoreData
 import Firebase
 
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: CBViewController {
 
-  var results :NSArray?
+  var results :Array<AnyObject> = []
   var selectedRow:Int?
   
+  @IBOutlet weak var emtpyFavoritesView: UIView!
   @IBOutlet weak var tableView: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    // TODO: Add to base view controller class!
-    self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 0/255, green: 175/255, blue: 255/255, alpha: 1)
-    self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-    self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-    
-//    let clearAllBtn = UIBarButtonItem.init(title: "Clear all", style:UIBarButtonItemStyle.Plain, target: self, action: #selector(clearHistory))
-//    self.navigationItem.rightBarButtonItem = clearAllBtn
     
     loadFavorites()
   }
@@ -35,6 +28,7 @@ class FavoritesViewController: UIViewController {
     super.viewWillAppear(animated)
     
     loadFavorites()
+    emptyTableCheck()
     self.tableView.reloadData()
   }
   
@@ -42,6 +36,21 @@ class FavoritesViewController: UIViewController {
     super.viewWillDisappear(animated)
     
     self.navigationItem.rightBarButtonItem = nil
+  }
+  
+  func emptyTableCheck() {
+    self.emtpyFavoritesView.alpha = self.results.count == 0 ? 1.0 : 0.0
+  }
+  
+  func animateEmptyTable() {
+    UIView.animateWithDuration(0.5,
+                               delay: 0.0,
+                               options: .CurveLinear,
+                               animations: {
+                                self.emtpyFavoritesView.alpha = 1.0
+      },
+                               completion: nil
+    )
   }
   
   func loadFavorites() {
@@ -61,13 +70,12 @@ class FavoritesViewController: UIViewController {
     let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     let context:NSManagedObjectContext = appDel.managedObjectContext
     
-    let favoriteWords = results![row]
-    context.deleteObject(favoriteWords as! NSManagedObject)
+    context.deleteObject(results[row] as! NSManagedObject)
+    results.removeAtIndex(row)
     
     do {
       try context.save()
-      let request = NSFetchRequest(entityName: "WordFavorites")
-      results = try context.executeFetchRequest(request)
+      if results.count == 0 {animateEmptyTable()}
     } catch {}
 
   }
@@ -79,7 +87,7 @@ class FavoritesViewController: UIViewController {
   
   func shareWords(sender : AnyObject) {
     
-    let data = results![selectedRow!]
+    let data = results[selectedRow!]
     
     let firstWord = data.valueForKey("firstWord") as? String
     let secondWord = data.valueForKey("secondWord") as? String
@@ -111,13 +119,13 @@ class FavoritesViewController: UIViewController {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return results!.count
+    return results.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = UITableViewCell.init(style: .Default, reuseIdentifier: "FavoritesIdentifier")
     
-    let data = results![indexPath.row] as! NSManagedObject
+    let data = results[indexPath.row] as! NSManagedObject
     
     let firstWord = data.valueForKey("firstWord") as? String
     let secondWord = data.valueForKey("secondWord") as? String

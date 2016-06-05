@@ -9,9 +9,10 @@
 import UIKit
 import CoreData
 
-class GenerateViewController: UIViewController {
+class GenerateViewController: CBViewController {
 
   @IBOutlet weak var refreshWord: UIButton!
+  @IBOutlet weak var displayTypeSegment: UISegmentedControl!
   
   @IBOutlet weak var totalIdeasGenerated: UILabel!
   @IBOutlet weak var wordDisplay: UILabel!
@@ -31,10 +32,7 @@ class GenerateViewController: UIViewController {
     wordDisplay.adjustsFontSizeToFitWidth = true
     wordDisplay.minimumScaleFactor = 0.5
     
-    // TODO: Add to base view controller class!
-    self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 0/255, green: 175/255, blue: 255/255, alpha: 1)
-    self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-    self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    displayTypeSegment.tintColor = deaColor
     
     refreshWord.addTarget(self, action: #selector(refreshWords) , forControlEvents: .TouchUpInside)
     
@@ -79,6 +77,25 @@ class GenerateViewController: UIViewController {
       let favoriteBtn = UIBarButtonItem.init(image: UIImage.init(imageLiteral: "favorited"), style: .Plain, target: self, action: #selector(saveWordsToFavorites))
       self.navigationItem.leftBarButtonItem = favoriteBtn
       
+      let icon = UIImage(named: "favorited")
+      let iconSize = CGRect(origin: CGPointZero, size: icon!.size)
+      let iconButton = UIButton(frame: iconSize)
+      iconButton.setBackgroundImage(icon, forState: .Normal)
+      iconButton.setBackgroundImage(icon, forState: .Highlighted)
+      favoriteBtn.customView = iconButton
+      favoriteBtn.customView!.transform = CGAffineTransformMakeScale(0.6, 0.6)
+      
+      UIView.animateWithDuration(1.0,
+                                 delay: 0.0,
+                                 usingSpringWithDamping: 0.3,
+                                 initialSpringVelocity: 10,
+                                 options: .CurveLinear,
+                                 animations: {
+                                  favoriteBtn.customView!.transform = CGAffineTransformIdentity
+        },
+                                 completion: nil
+      )
+      
       // Store words in core data to use in the favorites view
       let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
       let context:NSManagedObjectContext = appDel.managedObjectContext
@@ -100,9 +117,9 @@ class GenerateViewController: UIViewController {
     let favoriteBtn = UIBarButtonItem.init(image: UIImage.init(imageLiteral: "favorite"), style: .Plain, target: self, action: #selector(saveWordsToFavorites))
     self.navigationItem.leftBarButtonItem = favoriteBtn
     
-    firstWord = getRandomWord()
-    secondWord = getRandomWord()
-    thirdWord = getRandomWord()
+    firstWord = getRandomIdea()
+    secondWord = getRandomIdea()
+    thirdWord = getRandomIdea()
     let words: String = firstWord + " " + secondWord + " " + thirdWord
     
     wordDisplay.fadeTransition(0.15)
@@ -125,16 +142,48 @@ class GenerateViewController: UIViewController {
     try context.save()
   }
   
+  func getRandomIdea() -> String {
+    
+    var randomIdea = ""
+    
+    switch displayTypeSegment.selectedSegmentIndex {
+    case 0:
+      randomIdea = getRandomWord()
+    case 1:
+      randomIdea = getRandomEmoji()
+    case 2:
+      let randomWordOrEmoji = arc4random_uniform(2)
+      if randomWordOrEmoji == 0 {
+        randomIdea = getRandomWord()
+      } else {
+        randomIdea = getRandomEmoji()
+      }
+    default:
+      break
+    }
+    
+    return randomIdea
+  }
+
   func getRandomWord() -> String {
     let path = NSBundle.mainBundle().pathForResource("Words", ofType:"plist")
     let words = NSArray(contentsOfFile:path!)
     
-    let randomIndex = arc4random_uniform(UInt32(words!.count))
-    let randomWord = words![Int(randomIndex)]
+    let randomWordIndex = arc4random_uniform(UInt32(words!.count))
+    let randomWord = words![Int(randomWordIndex)] as! String
     
-    return randomWord as! String
+    return randomWord
   }
-
+  
+  func getRandomEmoji() -> String {
+    let path = NSBundle.mainBundle().pathForResource("Emoji", ofType:"plist")
+    let emoji = NSArray(contentsOfFile:path!)
+    let randomEmojiIndex = arc4random_uniform(UInt32(emoji!.count))
+    let randomEmoji = emoji![Int(randomEmojiIndex)] as! String
+    
+    return randomEmoji
+  }
+  
   // MARK: Shake to refresh words
   
   override func canBecomeFirstResponder() -> Bool {
